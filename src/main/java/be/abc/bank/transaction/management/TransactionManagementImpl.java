@@ -1,10 +1,8 @@
 package be.abc.bank.transaction.management;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +13,24 @@ import be.abc.bank.transaction.transaction.v1.model.TransactionDetail;
 import be.abc.bank.transaction.transaction.v1.model.TransactionDetailsInfo;
 import be.abc.bank.transaction.transaction.v1.model.TransactionRequestInfo;
 
+/**
+ * Manager service supervise the transaction service operations or communications.
+ * It is used to create the business logic and communicating with other sub ordinate services.
+ *
+ * @author Renjith
+ *
+ */
 @Component
 public class TransactionManagementImpl implements ITransactionManagement {
 
-	private static final Logger LOGGER = Logger.getLogger(TransactionManagementImpl.class);
-
 	@Autowired
-	ITransactionService myTransactionService;
+	private ITransactionService myTransactionService;
 
+	/**
+	 * create a new transaction for accounts
+	 * @param anInput CustomerRequestInfo
+	 * @return String
+	 */
 	@Override
 	public void createTransaction(TransactionRequestInfo anInput) {
 		
@@ -34,6 +42,11 @@ public class TransactionManagementImpl implements ITransactionManagement {
 		myTransactionService.createTransaction(aTransactionEntity);
 	}
 	
+	/**
+	 * Get transaction detail from transaction table
+	 * @param anInput CustomerRequestInfo
+	 * @return String
+	 */
 	@Override
 	public TransactionDetailsInfo getTransactionDetail(List<String> accountIds) {
 		
@@ -41,14 +54,14 @@ public class TransactionManagementImpl implements ITransactionManagement {
 		List<TransactionDetail> theTransactionDetails = theTransactionEntities.stream().map(theTransactionalEntity-> {
 			TransactionDetail aTransactionDetail =new TransactionDetail();
 			aTransactionDetail.setTransactionTimestamp(theTransactionalEntity.getTransactionTimestamp().toString());
-			aTransactionDetail.setAccountNumber(""+theTransactionalEntity.getAccountId());
+			aTransactionDetail.setAccountNumber(String.valueOf(theTransactionalEntity.getAccountId()));
 			aTransactionDetail.setAmount(theTransactionalEntity.getAmount());
-			aTransactionDetail.setTransactionId(""+theTransactionalEntity.getTransactionId());
+			aTransactionDetail.setTransactionId(String.valueOf(theTransactionalEntity.getTransactionId()));
 			return aTransactionDetail;
 		}).collect(Collectors.toList());
 		TransactionDetailsInfo aTransactionDetailsInfo =new TransactionDetailsInfo();
 		aTransactionDetailsInfo.setTransactionDetails(theTransactionDetails);
-		// TODO Auto-generated method stub
+
 		return aTransactionDetailsInfo;
 	}
 }

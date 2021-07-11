@@ -14,6 +14,7 @@ import be.abc.bank.transaction.entity.TransactionEntity;
 
 
 /**
+ * Transaction Service Repository
  * @author Renjith
  *
  */

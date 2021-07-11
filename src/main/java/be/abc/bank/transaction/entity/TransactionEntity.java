@@ -7,8 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import be.abc.bank.transaction.foundation.ApplicationUtil;
-
+/**
+ * Entity class for transaction table
+ * 
+ * @author Renjith
+ *
+ */
 
 @Entity(name = "transactiondetails")
 @Table(name = "ABC_BANK_TRANSACTION_DETAILS")
@@ -41,7 +45,28 @@ public class TransactionEntity {
 	@Column(name = "amount")
 	private long amount;
 
+	/**
+	 * TransactionEntity constructor
+	 */
+	public TransactionEntity() {
+		super();
+	}
 
+	/**
+	 * TransactionEntity
+	 * 
+	 * @param transactionId String
+	 * @param accountId String
+	 * @param transactionTimestamp Timestamp
+	 * @param amount long
+	 */
+	public TransactionEntity(String transactionId, String accountId, Timestamp transactionTimestamp, long amount) {
+		super();
+		this.transactionId = transactionId;
+		this.accountId = accountId;
+		this.transactionTimestamp = transactionTimestamp;
+		this.amount = amount;
+	}
 
 	/**
 	 * @return the transactionTimestamp
@@ -55,7 +80,7 @@ public class TransactionEntity {
 	 */
 	public void setTransactionTimestamp(Timestamp transactionTimestamp) {
 
-			this.transactionTimestamp = transactionTimestamp;
+		this.transactionTimestamp = transactionTimestamp;
 	}
 
 	/**
@@ -85,5 +110,45 @@ public class TransactionEntity {
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
+		result = prime * result + (int) (amount ^ (amount >>> 32));
+		result = prime * result + ((transactionId == null) ? 0 : transactionId.hashCode());
+		result = prime * result + ((transactionTimestamp == null) ? 0 : transactionTimestamp.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TransactionEntity other = (TransactionEntity) obj;
+		if (accountId == null) {
+			if (other.accountId != null)
+				return false;
+		} else if (!accountId.equals(other.accountId))
+			return false;
+		if (amount != other.amount)
+			return false;
+		if (transactionId == null) {
+			if (other.transactionId != null)
+				return false;
+		} else if (!transactionId.equals(other.transactionId))
+			return false;
+		if (transactionTimestamp == null) {
+			if (other.transactionTimestamp != null)
+				return false;
+		} else if (!transactionTimestamp.equals(other.transactionTimestamp))
+			return false;
+		return true;
+	}
+
 }

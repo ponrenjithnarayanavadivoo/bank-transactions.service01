@@ -5,6 +5,12 @@ import java.util.List;
 import be.abc.bank.transaction.transaction.v1.model.TransactionDetailsInfo;
 import be.abc.bank.transaction.transaction.v1.model.TransactionRequestInfo;
 
+/**
+ * Transaction management Interface
+ * @author Renjith
+ *
+ */
+
 public interface ITransactionManagement {
 
 	void createTransaction(TransactionRequestInfo anInput);

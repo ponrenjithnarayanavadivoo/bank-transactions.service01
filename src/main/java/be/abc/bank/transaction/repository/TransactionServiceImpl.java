@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 import be.abc.bank.transaction.entity.TransactionEntity;
 
 /**
+ * Transaction service implementation between  DB and management class
+ * 
  * @author Renjith
- *
  */
 @Service
 public class TransactionServiceImpl implements ITransactionService {
@@ -22,7 +23,6 @@ public class TransactionServiceImpl implements ITransactionService {
 
 	@Override
 	public List<TransactionEntity> getTransactionDetailsById(List<String> accountId) {
-		// TODO Auto-generated method stub
 		return myAccountRepository.getAllRowsById(accountId);
 	}
 

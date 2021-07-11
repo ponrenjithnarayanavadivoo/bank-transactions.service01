@@ -25,7 +25,7 @@ import be.abc.bank.transaction.transaction.v1.model.TransactionRequestInfo;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "spring.profiles.active=test" })
+@SpringBootTest
 @AutoConfigureMockMvc
 class TransactionApplicationTests {
 

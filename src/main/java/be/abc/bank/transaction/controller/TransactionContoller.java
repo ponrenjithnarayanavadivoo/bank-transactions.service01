@@ -31,7 +31,7 @@ import be.abc.bank.transaction.transaction.v1.model.TransactionRequestInfo;
  *
  */
 @RestController
-@RequestMapping("abc/transaction/v1")
+@RequestMapping("abc/transactions/v1")
 public class TransactionContoller {
 
 	private static final Logger LOGGER = Logger.getLogger(TransactionContoller.class);

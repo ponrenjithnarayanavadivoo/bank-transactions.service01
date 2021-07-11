@@ -1,5 +1,6 @@
 package be.abc.bank.transaction.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity(name = "transactiondetails")
 @Table(name = "ABC_BANK_TRANSACTION_DETAILS")
-public class TransactionEntity {
+public class TransactionEntity implements Serializable{
+
+	private static final long serialVersionUID = 922675883775507927L;
 
 	@Id
 	@Column(name = "transaction_id")

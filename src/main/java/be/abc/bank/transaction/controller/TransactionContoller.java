@@ -5,7 +5,6 @@ package be.abc.bank.transaction.controller;
 
 import java.util.List;
 
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,6 +46,7 @@ public class TransactionContoller {
 
 			myManager.createTransaction(aInput);
 		} catch (Exception e) {
+			LOGGER.error(e);
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
 					TransactionConstants.INTERNAL_SERVER_ERROR, e);
 		}
@@ -60,6 +60,7 @@ public class TransactionContoller {
 			return myManager.getTransactionDetail(accoundIds);
 		}
 		catch (Exception e) {
+			LOGGER.error(e);
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
 					TransactionConstants.INTERNAL_SERVER_ERROR, e);
 		}

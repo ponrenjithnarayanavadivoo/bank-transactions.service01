@@ -39,7 +39,7 @@ class TransactionApplicationTests {
 
 		TransactionRequestInfo aTransRequestInfo = prepareCreateTransaction();
 
-		mvc.perform(post("http://localhost:9083/abc/transaction/v1/createTransaction").header("Request-id", "1")
+		mvc.perform(post("http://localhost:9083/abc/transactions/v1/createTransaction").header("Request-id", "1")
 				.header("version", "1.0.0").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(aTransRequestInfo))).andExpect(status().isNoContent());
 	}
@@ -49,11 +49,11 @@ class TransactionApplicationTests {
 
 		TransactionRequestInfo aTransRequestInfo = prepareCreateTransaction();
 		aTransRequestInfo.setAccountNumber((long) 134578);
-		mvc.perform(post("http://localhost:9083/abc/transaction/v1/createTransaction").header("Request-id", "1")
+		mvc.perform(post("http://localhost:9083/abc/transactions/v1/createTransaction").header("Request-id", "1")
 				.header("version", "1.0.0").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(aTransRequestInfo))).andExpect(status().isNoContent());
 
-		mvc.perform(get("http://localhost:8082/abc/transaction/v1/getTransactionDetail/134578").header("Request-id", "1")
+		mvc.perform(get("http://localhost:8082/abc/transactions/v1/getTransactionDetail/134578").header("Request-id", "1")
 				.header("version", "1.0.0").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
 

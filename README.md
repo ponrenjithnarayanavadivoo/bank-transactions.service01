@@ -1,5 +1,6 @@
 # Transaction Service
-  This Service is used for creating transaction and retreiving the transaction details from the transaction table.
+  REST Transaction Service is used for to create transaction and retreiving the transaction details from the transaction table.
+
 ### Prerequisites
 You need the following installed and available in your $PATH:
 
@@ -8,7 +9,7 @@ You need the following installed and available in your $PATH:
 
 ####  Maven builds:
 ```
-mvn install
+mvn clean install
 ```
 
 #### Execution
@@ -21,3 +22,9 @@ http://localhost:9083/
 
 #### To check the DB
 http://localhost:9083/h2-ui/
+
+###  Configuration
+
+The api is centralized on GitHub public repository and the settings.xml in the root folder needs to be configured on your local machine.
+
+

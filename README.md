@@ -1,5 +1,5 @@
 # Transaction Service
-  REST Transaction Service is used for to create transaction and retreive the transaction details from the transaction table.
+  REST Transaction Service is used for to create transaction and retreive the transaction details from in-memory H2 table
 
 ### Prerequisites
 You need the following installed and available in your $PATH:

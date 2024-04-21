@@ -41,7 +41,7 @@ public class TransactionContoller {
 	@PostMapping(path = "/createTransaction", consumes = "application/json")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void createTransaction(@RequestBody TransactionRequestInfo aInput) {
-		LOGGER.debug("Rest endpoint createTransaction() is called ..");
+		LOGGER.debug("Rest endpoint createTransaction() is called .");
 		try {
 
 			myManager.createTransaction(aInput);

@@ -43,7 +43,6 @@ public class TransactionContoller {
 	public void createTransaction(@RequestBody TransactionRequestInfo aInput) {
 		LOGGER.debug("Rest endpoint createTransaction() is called .");
 		try {
-
 			myManager.createTransaction(aInput);
 		} catch (Exception e) {
 			LOGGER.error(e);
